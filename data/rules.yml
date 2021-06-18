@@ -1,0 +1,31 @@
+version: "2.0"
+
+rules:
+
+- rule: welcome user
+  steps:
+    - intent: greet
+    - action: action_welcome
+
+- rule: general conversation
+  steps:
+    - intent: nlu_fallback
+    - action: action_convo
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: request text generation
+  steps:
+  - intent: req_gen_text
+  - action: text_gen_form
+  - active_loop: text_gen_form
+  - active_loop: null
+  - action: action_gen_text

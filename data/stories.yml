@@ -1,0 +1,65 @@
+version: "2.0"
+
+stories:
+
+- story: user welcome
+  steps:
+    - intent: greet
+    - action: action_welcome
+
+- story: query bot
+  steps:
+    - intent: bot_challenge
+    - action: utter_iamabot
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: query bot
+  steps:
+    - intent: bot_owner
+    - action: utter_owner
+
+- story: generate text
+  steps:
+    - intent: greet
+    - action: action_welcome
+    - intent: req_gen_text
+    - action: text_gen_form
+    - action: action_gen_text
+    - intent: thank
+    - action: utter_urwelcome
+
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+# - story: happy path 2
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
+#   - intent: bot_owner
+#   - action: utter_owner
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye

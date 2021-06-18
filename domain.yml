@@ -1,0 +1,57 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- thank:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- bot_owner:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true
+- req_gen_text:
+    use_entities: true
+entities: []
+slots:
+    text4gen:
+        type: text
+        influence_conversation: false
+responses:
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_owner:
+  - text: I am developed by Bryan Low for the purpose of testing the capabilities of using a chatbot.
+  utter_urwelcome:
+  - text: You're welcome!
+  - text: My pleasure!
+  utter_ask_text4gen:
+  - text: Sure, what sentence would you like me to complete? (Please provide the first few words you would like me to continue on)
+actions:
+- action_session_start
+- action_welcome
+- action_convo
+- action_gen_text
+forms:
+  text_gen_form:
+    required_slots:
+        text4gen:
+        - type: from_text
+e2e_actions: []
