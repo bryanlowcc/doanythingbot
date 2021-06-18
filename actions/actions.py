@@ -101,5 +101,3 @@ class TextGenerator(Action):
         dispatcher.utter_message(text=generated_text)
 
         return []
-
-        asdfasf
