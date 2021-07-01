@@ -1,57 +1,59 @@
 version: '2.0'
-config:
-  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet:
-    use_entities: true
-- goodbye:
-    use_entities: true
-- thank:
-    use_entities: true
-- affirm:
-    use_entities: true
-- deny:
-    use_entities: true
-- mood_great:
-    use_entities: true
-- mood_unhappy:
-    use_entities: true
-- bot_challenge:
-    use_entities: true
-- bot_owner:
-    use_entities: true
-- nlu_fallback:
-    use_entities: true
-- req_gen_text:
-    use_entities: true
-entities: []
+- req_feedback
+- bot_challenge
+- greet
+- goodbye
+- thank
+- affirm
+- deny
+- bot_owner
+- req_gen_text
 slots:
-    text4gen:
-        type: text
-        influence_conversation: false
+  text4gen:
+    type: text
+    influence_conversation: false
+  text4feedback:
+    type: text
+    influence_conversation: false
 responses:
   utter_goodbye:
   - text: Bye
+  - text: kthxbye
+  - text: See you again soon! Hopefully... it gets awfully quiet here...
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: >
+        I am a chatbot that is capable of the following features:\\n
+        1) General conversation (ask me anything and I will try my best to answer them! no guarantee what I answer will make sense though)\\n
+        2) Generate text (just ask me to generate text, give a few words or a sentence for me to start from and I will give you a paragraph!)\\n
+        3) Record feedback (tell me if you have any complains, feedback or feature suggestion to give)
   utter_owner:
   - text: I am developed by Bryan Low for the purpose of testing the capabilities of using a chatbot.
   utter_urwelcome:
   - text: You're welcome!
   - text: My pleasure!
+  utter_continue:
+  - text: Okay, how many I help you?
+  - text: Alright, how can I assist you?
   utter_ask_text4gen:
   - text: Sure, what sentence would you like me to complete? (Please provide the first few words you would like me to continue on)
+  utter_ask_text4feedback:
+  - text: Sure, what feedback or feature request would you like to provide?
 actions:
 - action_session_start
-- action_welcome
 - action_convo
+- action_feedback
 - action_gen_text
+- action_welcome
 forms:
   text_gen_form:
     required_slots:
-        text4gen:
-        - type: from_text
-e2e_actions: []
+      text4gen:
+      - type: from_text
+  text_feedback_form:
+    required_slots:
+      text4feedback:
+      - type: from_text

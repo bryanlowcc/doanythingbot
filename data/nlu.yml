@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -15,7 +14,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+    - hey!
 - intent: goodbye
   examples: |
     - cu
@@ -28,12 +27,10 @@ nlu:
     - have a nice day
     - see you around
     - bye bye
-    - see you later
     - ok, bye
     - okay, goodbye!
     - aite, see ya
     - alright, bye
-
 - intent: thank
   examples: |
     - thank you
@@ -41,7 +38,6 @@ nlu:
     - alright, thank your
     - thanks so much!
     - thank you very much
-
 - intent: affirm
   examples: |
     - yes
@@ -50,7 +46,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -60,43 +55,14 @@ nlu:
     - don't like that
     - no way
     - not really
-
-# - intent: mood_great
-#   examples: |
-#     - perfect
-#     - great
-#     - amazing
-#     - feeling like a king
-#     - wonderful
-#     - I am feeling very good
-#     - I am great
-#     - I am amazing
-#     - I am going to save the world
-#     - super stoked
-#     - extremely good
-#     - so so perfect
-#     - so good
-#     - so perfect
-
-# - intent: mood_unhappy
-#   examples: |
-#     - my day was horrible
-#     - I am sad
-#     - I don't feel very well
-#     - I am disappointed
-#     - super sad
-#     - I'm so sad
-#     - sad
-#     - very sad
-#     - unhappy
-#     - not good
-#     - not very good
-#     - extremly sad
-#     - so saad
-#     - so sad
-
+    - no stupid
+    - wrong
+    - that's wrong
+    - that's not what I want
 - intent: bot_challenge
   examples: |
+    - help
+    - help me
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
@@ -110,7 +76,6 @@ nlu:
     - what are you?
     - what is your role?
     - what is your purpose?
-
 - intent: bot_owner
   examples: |
     - who made this?
@@ -120,8 +85,6 @@ nlu:
     - who is your owner?
     - who is your master?
     - who is your developer?
-
-# --------------------------------------FUNCTIONS---------------------------------
 - intent: req_gen_text
   examples: |
     - can you generate a paragraph for me please?
@@ -129,5 +92,18 @@ nlu:
     - generate some text
     - can you complete a sentence for me?
     - please generate a paragraph
-
-    
+- intent: req_feedback
+  examples: |
+    - I want to provide feedback
+    - let me submit feedback
+    - give feedback
+    - request new features
+    - I want to complain
+    - suggest improvements for bot
+    - suggest new features
+    - i have some features to suggest
+    - i have another suggestion to give
+    - i have another complain
+    - let me give another suggestions
+    - i want to complain somemore
+    - give another feedback

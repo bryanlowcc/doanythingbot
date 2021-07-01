@@ -11,7 +11,7 @@ from typing import Any, Text, Dict, List
 from datetime import datetime
 
 from rasa_sdk import Action, Tracker
-from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted
+from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 # For general conversation using BlenderBot in Fallback policy
@@ -21,18 +21,13 @@ tokenizer = BlenderbotTokenizer.from_pretrained('facebook/blenderbot-400M-distil
 generator = pipeline('text-generation', model='gpt2')
 set_seed(42)
 
-# class ActionHelloWorld(Action):
-
-#     def name(self) -> Text:
-#         return "action_hello_world"
-
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-#         dispatcher.utter_message(text="Hello World!")
-
-#         return []
+# For storing feedback in Google Sheets
+from oauth2client.service_account import ServiceAccountCredentials
+import gspread
+scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('actions/doanythingbot-sheetkey-87f175724514.json', scope)
+client = gspread.authorize(creds)
+feedback_sheet = client.open("doanythingbot-feedback").worksheet('feedback')
 
 class ActionSessionStart(Action):
     def name(self) -> Text:
@@ -45,15 +40,15 @@ class ActionSessionStart(Action):
         user = getpass.getuser()
 
         if time >= 5 and time < 12:
-            response = "Good Morning " + user + "! How may I assist you today?"
+            response = "Good Morning " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         elif time >= 12 and time < 17:
-            response = "Good Afternoon " + user + "! How may I assist you today?"
+            response = "Good Afternoon " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         else:
-            response = "Good Evening " + user + "! How may I assist you today?"
+            response = "Good Evening " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
         return [SessionStarted(), ActionExecuted("action_listen")]
 
@@ -66,15 +61,15 @@ class WelcomeMessage(Action):
         user = getpass.getuser()
 
         if time >= 5 and time < 12:
-            response = "Good Morning " + user + "! How may I assist you today?"
+            response = "Good Morning " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         elif time >= 12 and time < 17:
-            response = "Good Afternoon " + user + "! How may I assist you today?"
+            response = "Good Afternoon " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         else:
-            response = "Good Evening " + user + "! How may I assist you today?"
+            response = "Good Evening " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         return []
@@ -100,4 +95,14 @@ class TextGenerator(Action):
         generated_text = generator(tracker.slots.get("text4gen"), min_length=30, max_length=200, num_return_sequences=1)[0].get("generated_text").replace("\n\n", "\n")
         dispatcher.utter_message(text=generated_text)
 
-        return []
+        return [UserUtteranceReverted()]
+
+class Feedback(Action):
+    def name(self) -> Text:
+        return "action_feedback"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        feedback_sheet.insert_row([tracker.slots.get("text4feedback")], 1)
+        dispatcher.utter_message(text="Your feedback has been submitted! Thank you.")
+
+        return [UserUtteranceReverted()]

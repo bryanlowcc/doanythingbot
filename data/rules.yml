@@ -7,6 +7,11 @@ rules:
     - intent: greet
     - action: action_welcome
 
+- rule: revert and continue
+  steps:
+  - intent: deny
+  - action: utter_continue
+
 - rule: general conversation
   steps:
     - intent: nlu_fallback
@@ -28,4 +33,16 @@ rules:
   - action: text_gen_form
   - active_loop: text_gen_form
   - active_loop: null
+  - slot_was_set:
+    - requested_slot: null  
   - action: action_gen_text
+
+- rule: request feedback
+  steps:
+  - intent: req_feedback
+  - action: text_feedback_form
+  - active_loop: text_feedback_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_feedback
