@@ -6,7 +6,6 @@
 
 
 # This is a simple example for a custom action which utters "Hello World!"
-import getpass
 from typing import Any, Text, Dict, List
 from datetime import datetime
 
@@ -37,18 +36,17 @@ class ActionSessionStart(Action):
       self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
         time = int(datetime.now().strftime("%H"))
-        user = getpass.getuser()
 
         if time >= 5 and time < 12:
-            response = "Good Morning " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+            response = "Good Morning! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         elif time >= 12 and time < 17:
-            response = "Good Afternoon " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+            response = "Good Afternoon! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         else:
-            response = "Good Evening " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+            response = "Good Evening! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
         return [SessionStarted(), ActionExecuted("action_listen")]
 
@@ -58,18 +56,17 @@ class WelcomeMessage(Action):
 
     async def run(self, dispatcher: CollectingDispatcher,tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         time = int(datetime.now().strftime("%H"))
-        user = getpass.getuser()
 
         if time >= 5 and time < 12:
-            response = "Good Morning " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+            response = "Good Morning! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         elif time >= 12 and time < 17:
-            response = "Good Afternoon " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+            response = "Good Afternoon! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         else:
-            response = "Good Evening " + user + "! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+            response = "Good Evening! How may I assist you today?\ntype help for the list of features I'm currently capable of"
             dispatcher.utter_message(text=response)
 
         return []
