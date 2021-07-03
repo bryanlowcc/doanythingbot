@@ -38,20 +38,20 @@ class ActionSessionStart(Action):
     async def run(
       self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
-        time = int(datetime.now().strftime("%H"))
+        # time = int(datetime.now().strftime("%H"))
 
-        if time >= 5 and time < 12:
-            response = "Good Morning! How may I assist you today?\ntype help for the list of features I'm currently capable of"
-            dispatcher.utter_message(text=response)
+        # if time >= 5 and time < 12:
+        #     response = "Good Morning! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+        #     dispatcher.utter_message(text=response)
 
-        elif time >= 12 and time < 17:
-            response = "Good Afternoon! How may I assist you today?\ntype help for the list of features I'm currently capable of"
-            dispatcher.utter_message(text=response)
+        # elif time >= 12 and time < 17:
+        #     response = "Good Afternoon! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+        #     dispatcher.utter_message(text=response)
 
-        else:
-            response = "Good Evening! How may I assist you today?\ntype help for the list of features I'm currently capable of"
-            dispatcher.utter_message(text=response)
-        return [SessionStarted(), ActionExecuted("action_listen")]
+        # else:
+        #     response = "Good Evening! How may I assist you today?\ntype help for the list of features I'm currently capable of"
+        #     dispatcher.utter_message(text=response)
+        return [SessionStarted(), ActionExecuted("action_welcome"), ActionExecuted("action_listen")]
 
 class WelcomeMessage(Action):
     def name(self) -> Text:
