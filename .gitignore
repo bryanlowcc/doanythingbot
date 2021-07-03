@@ -1,3 +1,5 @@
 /tests
 /venv
 /models
+/actions/test.py
+/actions/__pycache__
