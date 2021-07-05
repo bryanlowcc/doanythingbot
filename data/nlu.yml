@@ -31,6 +31,7 @@ nlu:
     - okay, goodbye!
     - aite, see ya
     - alright, bye
+    - ok bye!
 - intent: thank
   examples: |
     - thank you

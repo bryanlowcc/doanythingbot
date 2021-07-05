@@ -47,3 +47,17 @@ stories:
   - intent: req_feedback
   - action: text_feedback_form
   - action: action_feedback
+
+- story: interactive_story_1
+  steps:
+  - action: action_welcome
+  - intent: greet
+  - action: action_welcome
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - intent: req_covid
+  - action: action_covid
+  - intent: thank
+  - action: utter_urwelcome
+  - intent: goodbye
+  - action: utter_goodbye

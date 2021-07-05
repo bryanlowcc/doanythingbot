@@ -1,43 +1,24 @@
 version: '2.0'
-config:
-  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- req_feedback:
-    use_entities: true
-- bot_challenge:
-    use_entities: true
-- greet:
-    use_entities: true
-- goodbye:
-    use_entities: true
-- thank:
-    use_entities: true
-- affirm:
-    use_entities: true
-- deny:
-    use_entities: true
-- bot_owner:
-    use_entities: true
-- req_gen_text:
-    use_entities: true
-- req_covid:
-    use_entities: true
-- nlu_fallback:
-    use_entities: true
-entities: []
+- greet
+- goodbye
+- thank
+- bot_challenge
+- req_covid
+- req_feedback
+- affirm
+- deny
+- bot_owner
+- req_gen_text
 slots:
   text4gen:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
+    type: text
     influence_conversation: false
   text4feedback:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
+    type: text
     influence_conversation: false
 responses:
   utter_goodbye:
@@ -46,10 +27,10 @@ responses:
   - text: See you again soon! Hopefully... it gets awfully quiet here...
   utter_iamabot:
   - text: |
-      I am a chatbot that is capable of the following features:\n\n
-      1) General conversation (ask me anything and I will try my best to answer them! no guarantee what I answer will make sense though)\n\n
-      2) Generate text (just ask me to generate text, give a few words or a sentence for me to start from and I will give you a paragraph!)\n\n
-      3) Malaysia covid statistics (info on current cases and vaccination rates)\n\n
+      I am a chatbot that is capable of the following features:
+      1) General conversation (ask me anything and I will try my best to answer them! no guarantee guarantee that responses will make sense)
+      2) Generate text (just ask me to generate text, give a few words or a sentence for me to start from and I will give you a paragraph!)
+      3) Malaysia covid statistics (info on current cases and vaccination rates)
       4) Record feedback (tell me if you have any complains, feedback or feature suggestion to give)
   utter_owner:
   - text: I am developed by Bryan Low for the purpose of testing chatbot capabilities.
@@ -64,12 +45,12 @@ responses:
   utter_ask_text4feedback:
   - text: Sure, what feedback or feature request would you like to provide?
 actions:
-- action_session_start
 - action_convo
+- action_covid
 - action_feedback
 - action_gen_text
+- action_session_start
 - action_welcome
-- action_covid
 forms:
   text_gen_form:
     required_slots:
@@ -79,4 +60,3 @@ forms:
     required_slots:
       text4feedback:
       - type: from_text
-e2e_actions: []

@@ -63,15 +63,15 @@ class WelcomeMessage(Action):
         time = int(datetime.now().strftime("%H"))
 
         if time >= 5 and time < 12:
-            response = "Good Morning! How may I assist you today?\n\ntype help for the list of features I'm currently capable of"
+            response = "Good Morning! How may I assist you today?\n \ntype help for the list of features I'm currently capable of."
             dispatcher.utter_message(text=response)
 
         elif time >= 12 and time < 17:
-            response = "Good Afternoon! How may I assist you today?\n\ntype help for the list of features I'm currently capable of"
+            response = "Good Afternoon! How may I assist you today?\n \ntype help for the list of features I'm currently capable of."
             dispatcher.utter_message(text=response)
 
         else:
-            response = "Good Evening! How may I assist you today?\n\ntype help for the list of features I'm currently capable of"
+            response = "Good Evening! How may I assist you today?\n \ntype help for the list of features I'm currently capable of."
             dispatcher.utter_message(text=response)
 
         return []
@@ -82,12 +82,10 @@ class GeneralConvo(Action):
 
     def run(self, dispatcher: CollectingDispatcher,tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         inputs = tokenizer([tracker.latest_message['text']], return_tensors='pt')
-        print(tracker.latest_message['text'] + " " + str(inputs))
         reply_ids = model.generate(**inputs)
         dispatcher.utter_message(text="{}".format(tokenizer.batch_decode(reply_ids)[0].replace("<s>", "").replace("</s>", "")))
 
-        # Revert user message which led to fallback.
-        return []
+        return [ActionExecuted("action_listen")]
 
 class TextGenerator(Action):
     def name(self) -> Text:
@@ -150,4 +148,4 @@ class Covid(Action):
 
         dispatcher.utter_message(text=response)
 
-        return []        
+        return [ActionExecuted("action_listen")]        
