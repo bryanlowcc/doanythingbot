@@ -113,6 +113,9 @@ nlu:
   examples: |
     - what is the latest covid status?
     - covid statistics
+    - covid statistics today
+    - covid stats today
+    - current covid
     - covid numbers today
     - covid cases
     - what is the number of new covid cases today?
@@ -120,3 +123,4 @@ nlu:
     - covid status
     - what are the vaccination numbers?
     - current vaccination rate
+    - what is the current covid statistics?
