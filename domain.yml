@@ -1,24 +1,48 @@
 version: '2.0'
+config:
+  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet
-- goodbye
-- thank
-- bot_challenge
-- req_covid
-- req_feedback
-- affirm
-- deny
-- bot_owner
-- req_gen_text
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- thank:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- req_covid:
+    use_entities: true
+- req_feedback:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- bot_owner:
+    use_entities: true
+- req_gen_text:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true
+entities: []
 slots:
   text4gen:
-    type: text
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
     influence_conversation: false
   text4feedback:
-    type: text
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
     influence_conversation: false
 responses:
   utter_goodbye:
@@ -49,7 +73,6 @@ actions:
 - action_covid
 - action_feedback
 - action_gen_text
-- action_session_start
 - action_welcome
 forms:
   text_gen_form:
@@ -60,3 +83,4 @@ forms:
     required_slots:
       text4feedback:
       - type: from_text
+e2e_actions: []
