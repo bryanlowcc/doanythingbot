@@ -10,7 +10,7 @@ stories:
   - action: utter_iamabot
   - intent: goodbye
   - action: utter_goodbye
-- story: query bot
+- story: query owner
   steps:
   - intent: bot_owner
   - action: utter_owner
@@ -47,8 +47,7 @@ stories:
   - intent: req_feedback
   - action: text_feedback_form
   - action: action_feedback
-
-- story: interactive_story_1
+- story: interactive_story_2
   steps:
   - action: action_welcome
   - intent: greet
