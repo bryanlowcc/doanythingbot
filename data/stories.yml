@@ -60,3 +60,45 @@ stories:
   - action: utter_urwelcome
   - intent: goodbye
   - action: utter_goodbye
+- story: Story from Conversation ID 51cbb02d18174c12a639d424ab63f0a5
+  steps:
+  - action: action_welcome
+  - intent: greet
+  - action: action_welcome
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - intent: req_covid
+  - action: action_covid
+- story: Story from Conversation ID 9fa730d1a81e49c3ad7267b59a5e2690
+  steps:
+  - action: action_welcome
+  - intent: greet
+  - action: action_welcome
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - intent: req_gen_text
+  - action: text_gen_form
+  - active_loop: text_gen_form
+  - slot_was_set:
+    - requested_slot: text4gen
+  - action: text_gen_form
+  - slot_was_set:
+    - text4gen: the father who never left home
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_gen_text
+  - intent: req_feedback
+  - action: text_feedback_form
+  - active_loop: text_feedback_form
+  - slot_was_set:
+    - requested_slot: text4feedback
+  - action: text_feedback_form
+  - slot_was_set:
+    - text4feedback: fix covid stats feature
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_feedback
+  - intent: req_covid
+  - action: action_covid
