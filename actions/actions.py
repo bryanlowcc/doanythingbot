@@ -33,27 +33,6 @@ creds = ServiceAccountCredentials.from_json_keyfile_name('actions/doanythingbot-
 client = gspread.authorize(creds)
 feedback_sheet = client.open("doanythingbot-feedback").worksheet('feedback')
 
-class ActionSessionStart(Action):
-    def name(self) -> Text:
-        return "action_session_start"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # time = int(datetime.now().strftime("%H"))
-
-        # if time >= 5 and time < 12:
-        #     response = "Good Morning! How may I assist you today?"
-        #     dispatcher.utter_message(text=response)
-
-        # elif time >= 12 and time < 17:
-        #     response = "Good Afternoon! How may I assist you today?"
-        #     dispatcher.utter_message(text=response)
-
-        # else:
-        #     response = "Good Evening! How may I assist you today?"
-        #     dispatcher.utter_message(text=response)
-        # dispatcher.utter_message(text="type help for the list of features I'm currently capable of.")
-        return [SessionStarted(), UserUttered(text = "hello"), ActionExecuted("action_listen")]
-
 class WelcomeMessage(Action):
     def name(self) -> Text:
         return "action_welcome"
@@ -135,17 +114,5 @@ class Covid(Action):
         response =  f"Here are the current covid statistics for Malaysia:\nNew cases today = {cases_today}\nNew cases yesterday = {cases_yest}\nCurrent total active cases = {total_cases}\nCurrent total deaths = {total_deaths}\nTotal population in Malaysia = {total_pop}\nTotal tests = {total_tests}\nTest ratio per 100 people: {test_ratio}\nNew 1st dose vaccinations today = {vax1_today}\nNew 2nd dose vaccinations today = {vax2_today}\nTotal 1st dose vaccinations = {total_vax1}\nTotal 2nd dose vaccinations = {total_vax2}"
 
         dispatcher.utter_message(text=response)
-        # dispatcher.utter_message(text="Here are the current covid statistics for Malaysia:")
-        # dispatcher.utter_message(text=f"New cases today = {cases_today}")
-        # dispatcher.utter_message(text=f"New cases yesterday = {cases_yest}")
-        # dispatcher.utter_message(text=f"Current total active cases = {total_cases}")
-        # dispatcher.utter_message(text=f"Current total deaths = {total_deaths}")
-        # dispatcher.utter_message(text=f"Total population in Malaysia = {total_pop}")
-        # dispatcher.utter_message(text=f"Total tests = {total_tests}")
-        # dispatcher.utter_message(text=f"Test ratio per 100 people: {test_ratio}")
-        # dispatcher.utter_message(text=f"New 1st dose vaccinations today = {vax1_today}")
-        # dispatcher.utter_message(text=f"New 2nd dose vaccinations today = {vax2_today}")
-        # dispatcher.utter_message(text=f"Total 1st dose vaccinations = {total_vax1}")
-        # dispatcher.utter_message(text=f"Total 2nd dose vaccinations = {total_vax2}")
 
         return [UserUtteranceReverted()]        
