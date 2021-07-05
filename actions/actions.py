@@ -37,7 +37,7 @@ class ActionSessionStart(Action):
     def name(self) -> Text:
         return "action_session_start"
 
-    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         time = int(datetime.now().strftime("%H"))
 
         if time >= 5 and time < 12:
@@ -58,7 +58,7 @@ class WelcomeMessage(Action):
     def name(self) -> Text:
         return "action_welcome"
 
-    async def run(self, dispatcher: CollectingDispatcher,tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher,tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         time = int(datetime.now().strftime("%H"))
 
         if time >= 5 and time < 12:
