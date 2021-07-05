@@ -85,7 +85,7 @@ class GeneralConvo(Action):
         reply_ids = model.generate(**inputs)
         dispatcher.utter_message(text="{}".format(tokenizer.batch_decode(reply_ids)[0].replace("<s>", "").replace("</s>", "")))
 
-        return [ActionExecuted("action_listen")]
+        return [UserUtteranceReverted()]
 
 class TextGenerator(Action):
     def name(self) -> Text:
