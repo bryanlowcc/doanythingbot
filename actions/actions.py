@@ -15,7 +15,7 @@ from typing import Any, Text, Dict, List
 from datetime import datetime
 
 from rasa_sdk import Action, Tracker
-from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, SlotSet
+from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, FollowupAction
 from rasa_sdk.executor import CollectingDispatcher
 
 # For general conversation using BlenderBot in Fallback policy
@@ -38,21 +38,21 @@ class ActionSessionStart(Action):
         return "action_session_start"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        time = int(datetime.now().strftime("%H"))
+        # time = int(datetime.now().strftime("%H"))
 
-        if time >= 5 and time < 12:
-            response = "Good Morning! How may I assist you today?"
-            dispatcher.utter_message(text=response)
+        # if time >= 5 and time < 12:
+        #     response = "Good Morning! How may I assist you today?"
+        #     dispatcher.utter_message(text=response)
 
-        elif time >= 12 and time < 17:
-            response = "Good Afternoon! How may I assist you today?"
-            dispatcher.utter_message(text=response)
+        # elif time >= 12 and time < 17:
+        #     response = "Good Afternoon! How may I assist you today?"
+        #     dispatcher.utter_message(text=response)
 
-        else:
-            response = "Good Evening! How may I assist you today?"
-            dispatcher.utter_message(text=response)
-        dispatcher.utter_message(text="type help for the list of features I'm currently capable of.")
-        return [SessionStarted(), ActionExecuted("action_listen")]
+        # else:
+        #     response = "Good Evening! How may I assist you today?"
+        #     dispatcher.utter_message(text=response)
+        # dispatcher.utter_message(text="type help for the list of features I'm currently capable of.")
+        return [SessionStarted(), FollowupAction(name = "action_welcome"), FollowupAction(name = "action_listen")]
 
 class WelcomeMessage(Action):
     def name(self) -> Text:
