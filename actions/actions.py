@@ -133,19 +133,19 @@ class Covid(Action):
         total_vax1 = vax_data[4]
         total_vax2 = vax_data[5]
 
-        response =  f"""Here are the current covid statistics for Malaysia:\n
-                    New cases today = {cases_today}\n
-                    New cases yesterday = {cases_yest}\n
-                    Current total active cases = {total_cases}\n
-                    Current total deaths = {total_deaths}\n
-                    Total population in Malaysia = {total_pop}\n
-                    Total tests = {total_tests}\n
-                    Test ratio per 100 people: {test_ratio}\n
-                    New 1st dose vaccinations today = {vax1_today}\n
-                    New 2nd dose vaccinations today = {vax2_today}\n
-                    Total 1st dose vaccinations = {total_vax1}\n
+        response =  f"""Here are the current covid statistics for Malaysia:
+                    New cases today = {cases_today}
+                    New cases yesterday = {cases_yest}
+                    Current total active cases = {total_cases}
+                    Current total deaths = {total_deaths}
+                    Total population in Malaysia = {total_pop}
+                    Total tests = {total_tests}
+                    Test ratio per 100 people: {test_ratio}
+                    New 1st dose vaccinations today = {vax1_today}
+                    New 2nd dose vaccinations today = {vax2_today}
+                    Total 1st dose vaccinations = {total_vax1}
                     Total 2nd dose vaccinations = {total_vax2}"""
 
         dispatcher.utter_message(text=response)
 
-        return [ActionExecuted("action_listen")]        
+        return []        
