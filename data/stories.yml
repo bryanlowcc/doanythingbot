@@ -109,3 +109,22 @@ stories:
   - action: action_welcome
   - intent: req_covid
   - action: action_covid
+- story: Story from Conversation ID bf5e75ced0bd4152b7c452c4cd44fb10
+  steps:
+  - intent: greet
+  - action: action_welcome
+  - intent: req_covid
+  - action: action_covid
+  - intent: req_gen_text
+  - action: text_gen_form
+  - active_loop: text_gen_form
+  - slot_was_set:
+    - requested_slot: text4gen
+  - intent: deny
+  - action: text_gen_form
+  - slot_was_set:
+    - text4gen: tupac is not dead
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_gen_text
