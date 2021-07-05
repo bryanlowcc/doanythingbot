@@ -133,8 +133,19 @@ class Covid(Action):
         total_vax1 = vax_data[4]
         total_vax2 = vax_data[5]
 
-        response =  f"Here are the current covid statistics for Malaysia:\nNew cases today = {cases_today}\nNew cases yesterday = {cases_yest}\nCurrent total active cases = {total_cases}\nCurrent total deaths = {total_deaths}\nTotal population in Malaysia = {total_pop}\nTotal tests = {total_tests}\nTest ratio per 100 people: {test_ratio}\nNew 1st dose vaccinations today = {vax1_today}\nNew 2nd dose vaccinations today = {vax2_today}\nTotal 1st dose vaccinations = {total_vax1}\nTotal 2nd dose vaccinations = {total_vax2}"
+        # response =  f"Here are the current covid statistics for Malaysia:\nNew cases today = {cases_today}\nNew cases yesterday = {cases_yest}\nCurrent total active cases = {total_cases}\nCurrent total deaths = {total_deaths}\nTotal population in Malaysia = {total_pop}\nTotal tests = {total_tests}\nTest ratio per 100 people: {test_ratio}\nNew 1st dose vaccinations today = {vax1_today}\nNew 2nd dose vaccinations today = {vax2_today}\nTotal 1st dose vaccinations = {total_vax1}\nTotal 2nd dose vaccinations = {total_vax2}"
 
-        dispatcher.utter_message(text=response)
+        dispatcher.utter_message(text="Here are the current covid statistics for Malaysia:")
+        dispatcher.utter_message(text=f"New cases today = {cases_today}")
+        dispatcher.utter_message(text=f"New cases yesterday = {cases_yest}")
+        dispatcher.utter_message(text=f"Current total active cases = {total_cases}")
+        dispatcher.utter_message(text=f"Current total deaths = {total_deaths}")
+        dispatcher.utter_message(text=f"Total population in Malaysia = {total_pop}")
+        dispatcher.utter_message(text=f"Total tests = {total_tests}")
+        dispatcher.utter_message(text=f"Test ratio per 100 people: {test_ratio}")
+        dispatcher.utter_message(text=f"New 1st dose vaccinations today = {vax1_today}")
+        dispatcher.utter_message(text=f"New 2nd dose vaccinations today = {vax2_today}")
+        dispatcher.utter_message(text=f"Total 1st dose vaccinations = {total_vax1}")
+        dispatcher.utter_message(text=f"Total 2nd dose vaccinations = {total_vax2}")
 
-        return []        
+        return [UserUtteranceReverted()]        
