@@ -1,32 +1,25 @@
 version: "2.0"
-
 rules:
-
 - rule: welcome user
   steps:
-    - intent: greet
-    - action: action_welcome
-
+  - intent: greet
+  - action: action_welcome
 - rule: revert and continue
   steps:
   - intent: deny
   - action: utter_continue
-
 - rule: general conversation
   steps:
-    - intent: nlu_fallback
-    - action: action_convo
-
+  - intent: nlu_fallback
+  - action: action_convo
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
   - action: utter_goodbye
-
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-
 - rule: request text generation
   steps:
   - intent: req_gen_text
@@ -34,9 +27,8 @@ rules:
   - active_loop: text_gen_form
   - active_loop: null
   - slot_was_set:
-    - requested_slot: null  
+    - requested_slot: null
   - action: action_gen_text
-
 - rule: request feedback
   steps:
   - intent: req_feedback
@@ -46,3 +38,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: action_feedback
+- rule: request covid stats
+  steps:
+  - intent: req_covid
+  - action: action_covid
