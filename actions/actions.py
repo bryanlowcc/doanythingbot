@@ -39,7 +39,7 @@ class WelcomeMessage(Action):
 
     def run(self, dispatcher: CollectingDispatcher,tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         time = int(datetime.now().strftime("%H"))
-
+        dispatcher.utter_message(text=str(time))
         if time >= 5 and time < 12:
             response = "Good Morning! How may I assist you today?"
             dispatcher.utter_message(text=response)
