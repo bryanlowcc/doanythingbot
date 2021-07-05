@@ -93,6 +93,7 @@ nlu:
     - generate some text
     - can you complete a sentence for me?
     - please generate a paragraph
+    - generate text
 - intent: req_feedback
   examples: |
     - I want to provide feedback
@@ -109,6 +110,7 @@ nlu:
     - i want to complain somemore
     - give another feedback
     - I wanna make a complain
+    - send feedback
 - intent: req_covid
   examples: |
     - what is the latest covid status?
