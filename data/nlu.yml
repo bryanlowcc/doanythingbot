@@ -16,6 +16,7 @@ nlu:
     - good afternoon
     - hey!
     - howdy
+    - heyya
 - intent: goodbye
   examples: |
     - cu
@@ -95,6 +96,7 @@ nlu:
     - can you complete a sentence for me?
     - please generate a paragraph
     - generate text
+    - gen text
 - intent: req_feedback
   examples: |
     - I want to provide feedback
