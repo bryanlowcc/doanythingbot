@@ -63,17 +63,17 @@ class WelcomeMessage(Action):
         time = int(datetime.now().strftime("%H"))
 
         if time >= 5 and time < 12:
-            response = "Good Morning! How may I assist you today?\n \ntype help for the list of features I'm currently capable of."
+            response = "Good Morning! How may I assist you today?"
             dispatcher.utter_message(text=response)
 
         elif time >= 12 and time < 17:
-            response = "Good Afternoon! How may I assist you today?\n \ntype help for the list of features I'm currently capable of."
+            response = "Good Afternoon! How may I assist you today?"
             dispatcher.utter_message(text=response)
 
         else:
-            response = "Good Evening! How may I assist you today?\n \ntype help for the list of features I'm currently capable of."
+            response = "Good Evening! How may I assist you today?"
             dispatcher.utter_message(text=response)
-
+        dispatcher.utter_message(text="type help for the list of features I'm currently capable of.")
         return []
 
 class GeneralConvo(Action):
@@ -133,18 +133,7 @@ class Covid(Action):
         total_vax1 = vax_data[4]
         total_vax2 = vax_data[5]
 
-        response =  f"""Here are the current covid statistics for Malaysia:
-                    New cases today = {cases_today}
-                    New cases yesterday = {cases_yest}
-                    Current total active cases = {total_cases}
-                    Current total deaths = {total_deaths}
-                    Total population in Malaysia = {total_pop}
-                    Total tests = {total_tests}
-                    Test ratio per 100 people: {test_ratio}
-                    New 1st dose vaccinations today = {vax1_today}
-                    New 2nd dose vaccinations today = {vax2_today}
-                    Total 1st dose vaccinations = {total_vax1}
-                    Total 2nd dose vaccinations = {total_vax2}"""
+        response =  f"Here are the current covid statistics for Malaysia:\nNew cases today = {cases_today}\nNew cases yesterday = {cases_yest}\nCurrent total active cases = {total_cases}\nCurrent total deaths = {total_deaths}\nTotal population in Malaysia = {total_pop}\nTotal tests = {total_tests}\nTest ratio per 100 people: {test_ratio}\nNew 1st dose vaccinations today = {vax1_today}\nNew 2nd dose vaccinations today = {vax2_today}\nTotal 1st dose vaccinations = {total_vax1}\nTotal 2nd dose vaccinations = {total_vax2}"
 
         dispatcher.utter_message(text=response)
 
