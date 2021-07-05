@@ -102,3 +102,10 @@ stories:
   - action: action_feedback
   - intent: req_covid
   - action: action_covid
+- story: Story from Conversation ID 2072123510ee4e8d81e19c3f915e2792
+  steps:
+  - action: action_welcome
+  - intent: greet
+  - action: action_welcome
+  - intent: req_covid
+  - action: action_covid
