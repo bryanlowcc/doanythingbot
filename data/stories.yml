@@ -32,6 +32,12 @@ stories:
   - action: utter_urwelcome
   - intent: goodbye
   - action: utter_goodbye
+- story: get covid stats
+  steps:
+  - intent: greet
+  - action: action_welcome
+  - intent: req_covid
+  - action: action_covid
 - story: interactive_story_1
   steps:
   - intent: greet

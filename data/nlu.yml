@@ -108,3 +108,14 @@ nlu:
     - i want to complain somemore
     - give another feedback
     - I wanna make a complain
+- intent: req_covid
+  examples: |
+    - what is the latest covid status?
+    - covid statistics
+    - covid numbers today
+    - covid cases
+    - what is the number of new covid cases today?
+    - what is number of covid cases?
+    - covid status
+    - what are the vaccination numbers?
+    - current vaccination rate

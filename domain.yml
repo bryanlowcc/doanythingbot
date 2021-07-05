@@ -23,6 +23,8 @@ intents:
     use_entities: true
 - req_gen_text:
     use_entities: true
+- req_covid:
+    use_entities: true
 - nlu_fallback:
     use_entities: true
 entities: []
@@ -44,14 +46,18 @@ responses:
   - text: See you again soon! Hopefully... it gets awfully quiet here...
   utter_iamabot:
   - text: |
-      I am a chatbot that is capable of the following features:\\n 1) General conversation (ask me anything and I will try my best to answer them! no guarantee what I answer will make sense though)\\n 2) Generate text (just ask me to generate text, give a few words or a sentence for me to start from and I will give you a paragraph!)\\n 3) Record feedback (tell me if you have any complains, feedback or feature suggestion to give)
+      I am a chatbot that is capable of the following features:\n\n
+      1) General conversation (ask me anything and I will try my best to answer them! no guarantee what I answer will make sense though)\n\n
+      2) Generate text (just ask me to generate text, give a few words or a sentence for me to start from and I will give you a paragraph!)\n\n
+      3) Malaysia covid statistics (info on current cases and vaccination rates)\n\n
+      4) Record feedback (tell me if you have any complains, feedback or feature suggestion to give)
   utter_owner:
-  - text: I am developed by Bryan Low for the purpose of testing the capabilities of using a chatbot.
+  - text: I am developed by Bryan Low for the purpose of testing chatbot capabilities.
   utter_urwelcome:
   - text: You're welcome!
   - text: My pleasure!
   utter_continue:
-  - text: Okay, how many I help you?
+  - text: Okay, how may I help you?
   - text: Alright, how can I assist you?
   utter_ask_text4gen:
   - text: Sure, what sentence would you like me to complete? (Please provide the first few words you would like me to continue on)
@@ -63,6 +69,7 @@ actions:
 - action_feedback
 - action_gen_text
 - action_welcome
+- action_covid
 forms:
   text_gen_form:
     required_slots:
