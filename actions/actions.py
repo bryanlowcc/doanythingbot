@@ -52,7 +52,7 @@ class ActionSessionStart(Action):
         #     response = "Good Evening! How may I assist you today?"
         #     dispatcher.utter_message(text=response)
         # dispatcher.utter_message(text="type help for the list of features I'm currently capable of.")
-        return [SessionStarted(), ActionExecuted("action_welcome"), UserUttered(text = "/session_start")]
+        return [SessionStarted(), ActionExecuted("action_welcome"), UserUttered(text = "hello")]
 
 class WelcomeMessage(Action):
     def name(self) -> Text:
