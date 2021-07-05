@@ -15,7 +15,7 @@ from typing import Any, Text, Dict, List
 from datetime import datetime
 
 from rasa_sdk import Action, Tracker
-from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, FollowupAction
+from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, UserUttered
 from rasa_sdk.executor import CollectingDispatcher
 
 # For general conversation using BlenderBot in Fallback policy
@@ -52,7 +52,7 @@ class ActionSessionStart(Action):
         #     response = "Good Evening! How may I assist you today?"
         #     dispatcher.utter_message(text=response)
         # dispatcher.utter_message(text="type help for the list of features I'm currently capable of.")
-        return [SessionStarted(), FollowupAction(name = "action_welcome"), FollowupAction(name = "action_listen")]
+        return [SessionStarted(), ActionExecuted("action_welcome"), UserUttered(text = "/session_start")]
 
 class WelcomeMessage(Action):
     def name(self) -> Text:
