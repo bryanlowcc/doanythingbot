@@ -41,6 +41,7 @@ nlu:
     - alright, thank your
     - thanks so much!
     - thank you very much
+    - thanks
 - intent: affirm
   examples: |
     - yes
