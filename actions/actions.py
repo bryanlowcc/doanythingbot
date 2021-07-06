@@ -13,7 +13,6 @@ import requests
 # This is a simple example for a custom action which utters "Hello World!"
 from typing import Any, Text, Dict, List
 from datetime import datetime
-from time import localtime, strftime
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, UserUttered
@@ -40,7 +39,11 @@ class WelcomeMessage(Action):
 
     def run(self, dispatcher: CollectingDispatcher,tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         time = int(datetime.now().strftime("%H"))
-        dispatcher.utter_message(text=strftime("%Y-%m-%d %H:%M:%S", localtime()))
+        for i in range(8):
+            if time >= 24:
+                time = 1
+            else:
+                time += 1
         if time >= 5 and time < 12:
             response = "Good Morning! How may I assist you today?"
             dispatcher.utter_message(text=response)
