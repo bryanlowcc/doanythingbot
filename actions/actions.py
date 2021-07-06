@@ -97,7 +97,7 @@ class Covid(Action):
         stats_today = requests.get("https://disease.sh/v3/covid-19/countries/MY?strict=true").json()
         stats_yest = requests.get("https://disease.sh/v3/covid-19/countries/MY?yesterday=true&strict=true").json()
 
-        if stats_today["todayCases"] == "0":
+        if str(stats_today["todayCases"]) == "0":
             cases_today = "N/A yet"
         else:
             cases_today = stats_today["todayCases"]
