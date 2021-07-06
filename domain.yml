@@ -50,9 +50,9 @@ responses:
   - text: kthxbye
   - text: See you again soon! Hopefully... it gets awfully quiet here...
   utter_iamabot:
-  - text: |
+  - text: |-
       I am a chatbot that is capable of the following features:
-      1) General conversation (ask me anything and I will try my best to answer them! no guarantee guarantee that responses will make sense)
+      1) General conversation (ask me anything and I will try my best to answer them! no guarantee that responses will make sense)
       2) Generate text (just ask me to generate text, give a few words or a sentence for me to start from and I will give you a paragraph!)
       3) Malaysia covid statistics (info on current cases and vaccination rates)
       4) Record feedback (tell me if you have any complains, feedback or feature suggestion to give)
